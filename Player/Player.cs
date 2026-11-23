@@ -57,9 +57,9 @@ public class Player
       }
    }
 
-   public Campus MoveTo(Campus campus)
+   public void MoveTo(Campus campus)
    {
-      return campus; //??
+      position = campus;
    }
 
    public bool HasWon(int hp, bool hasExam, bool campusCard)
@@ -75,21 +75,31 @@ public class Player
          return false;
       }
    }
-   public void CanEnterCampus(Campus nextCampus)
+
+   public void PrintPosition()
    {
-
-      if (campusCard)
-      {
-         position = nextCampus;
-      }
-      else
-      {
-         Console.WriteLine("Du har inte nyckeln som krävs, välj ett annat campus");
-      }
-
+      Console.WriteLine($"Du befinner dig på {position.ShowName()}");
    }
 
+   public Campus GetPosition()
+   {
+      return position;
+   }
 
+   public void ShowDestinations()
+   {
+      position.PrintConnectedCampuses();
+   }
+
+   public Campus ChooseDestination(int choice)
+   {
+      return position.ChooseDestination(choice);
+   }
+
+   public bool IsConnectedTo(Campus nextCampus)
+   {
+      return position.IsConnectedTo(nextCampus);
+   }
 
 
 }

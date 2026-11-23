@@ -2,7 +2,7 @@ public class Player
 {
    private Campus startCampus;
    private int hp = 0;
-   private bool campusCard = false;
+   private List<string> campusCard = new List<string>();
    private bool hasExam = false;
    private Campus position;
 
@@ -24,21 +24,14 @@ public class Player
       return hp;
    }
 
-   public void GetCard() //Anropas när en spelare får ett campuskort
+   public void GetCard(string card) //Anropas när en spelare får ett campuskort
    {
-      campusCard = true;
+      campusCard.Add(card);
    }
 
-   public bool HasCard() //För att se om spelaren har ett campuskort
+   public bool HasCard(string requiredCard) //För att se om spelaren har rätt campuskort
    {
-      if (campusCard)
-      {
-         return true;
-      }
-      else
-      {
-         return false;
-      }
+      return campusCard.Contains(requiredCard);
    }
    public void GetExam() //Anropas när en spelare hittat examen
    {

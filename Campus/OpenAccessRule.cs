@@ -1,4 +1,7 @@
-public class OpenAccessRule
+public class OpenAccessRule : ICampusAccessRule
 {
-    // OpenAccessRule logic and properties would go here
+    public bool CanEnter(Player player)
+    {
+        return true;
+    }
 }

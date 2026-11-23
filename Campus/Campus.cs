@@ -1,6 +1,7 @@
 public class Campus
 {
     private string name;
+    private Campus[] connectedCampuses;
 
     public Campus(string name)
     {
@@ -10,9 +11,14 @@ public class Campus
         this.name = name;
     }
 
-    public void ConnectCampus(Campus[] connectedCampuses)
+    public void SetConnectedCampuses(Campus[] connectedCampuses) //Settar vilka campus som ska vara kopplade till ett visst campus
     {
-        //En regel för att komma in -->
+        this.connectedCampuses = connectedCampuses;
+    }
+
+    public Campus[] GetConnectedCampuses() //Returnerar campusen som är connected till ett visst campus
+    {
+        return connectedCampuses;
     }
 
 }   

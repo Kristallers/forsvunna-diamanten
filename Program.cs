@@ -23,5 +23,22 @@ class Program
 
         Console.WriteLine("Ny position::::::");
         player.PrintPosition();
+
+        Random random = new Random();
+
+        List<Event> events = new List<Event>
+        {
+            new StudyEvent(),
+            new TeacherEvent(),
+            new ExamEvent(),
+            new CardEvent("Blåsenhus"),
+            new NothingEvent()
+        };
+
+        EventSelector selector = new EventSelector(events, random);
+
+        selector.SelectEvent(player);
+        selector.SelectEvent(player);
+        selector.SelectEvent(player);
     }
 }

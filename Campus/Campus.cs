@@ -1,14 +1,22 @@
+// FALL #1
+// Subtypspolymorfism och beroendeinjektion
+// VAD: Subtypspolymorfism och beroendeinjektion.
+// HUR: Campus tar emot ett objekt som implementerar ICampusAccessRule. Två olika implementationer avgör om spelaren får komma in.
+// VARFÖR: Vi kan lägga till nya tillträdesregler utan att behöva ändra klassen Campus.
+
 public class Campus
 {
     private string name;
     private List<Campus>? connectedCampuses;
+    private ICampusAccessRule accessRule;
 
-    public Campus(string name)
+    public Campus(string name, ICampusAccessRule accessRule)
     {
         if (string.IsNullOrWhiteSpace(name))
             throw new ArgumentException("Name must not be empty.", nameof(name));
 
         this.name = name;
+        this.accessRule = accessRule;
     }
 
     public void SetConnectedCampuses(List<Campus> connectedCampuses) //Settar vilka campus som ska vara kopplade till ett visst campus
@@ -44,11 +52,14 @@ public class Campus
 
         return connectedCampuses[choice - 1];
     }
+     public bool CanEnter(Player player)
+    {
+        return accessRule.CanEnter(player);
+    }
 
     public void EnterCampus(Campus nextCampus, Player player)
     {
-
-        if (player.HasCard())
+        if (CanEnter(player))
         {
             player.MoveTo(nextCampus); //Kolla om vi kan göra detta bättre
         }

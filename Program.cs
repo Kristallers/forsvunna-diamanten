@@ -4,19 +4,19 @@ class Program
 {
     static void Main(string[] args)
     {
-        Campus ekonomikum = new Campus("Ekonomikum");
-        Campus blåsenhus = new Campus("Blåsenhus");
+        Campus ekonomikum = new Campus("Ekonomikum", new OpenAccessRule());
+        Campus blåsenhus = new Campus("Blåsenhus", new CardAccessRule("Blåsenhus"));
         Player player = new Player(ekonomikum);
 
-        List<Campus> ekoconnections = [blåsenhus];
+        List<Campus> ekoconnections = new List<Campus> { blåsenhus };
         ekonomikum.SetConnectedCampuses(ekoconnections);
 
-        List<Campus> campusesForGame = [ekonomikum, blåsenhus];
+        List<Campus> campusesForGame = new List<Campus> { ekonomikum, blåsenhus }   ;
 
         Board spelplan = new Board(campusesForGame, player);
         spelplan.ShowPlayerDestinations();
 
-        player.GetCard();
+        player.GetCard("Blåsenhus");
 
 
         spelplan.MovePlayer(blåsenhus);

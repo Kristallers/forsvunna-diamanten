@@ -57,9 +57,9 @@ public class Player
       }
    }
 
-   public Campus MoveTo(Campus campus)
+   public void MoveTo(Campus campus)
    {
-      return campus; //??
+      position = campus;
    }
 
    public bool HasWon(int hp, bool hasExam, bool campusCard)
@@ -80,13 +80,28 @@ public class Player
 
       if (campusCard)
       {
-         position = nextCampus;
+         MoveTo(nextCampus);
       }
       else
       {
          Console.WriteLine("Du har inte nyckeln som krävs, välj ett annat campus");
       }
 
+   }
+
+   public void PrintPosition()
+   {
+      Console.WriteLine($"Du befinner dig på {position}");
+   }
+
+   public Campus GetPosition()
+   {
+      return position;
+   }
+
+   public void ShowDestinations()
+   {
+      position.PrintConnectedCampuses();
    }
 
 

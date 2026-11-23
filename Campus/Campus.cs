@@ -1,24 +1,37 @@
 public class Campus
 {
     private string name;
-    private Campus[] connectedCampuses;
+    private List<Campus>? connectedCampuses;
 
     public Campus(string name)
     {
-        if(string.IsNullOrWhiteSpace(name))
-        throw new ArgumentException("Name must not be empty.", nameof(name));
+        if (string.IsNullOrWhiteSpace(name))
+            throw new ArgumentException("Name must not be empty.", nameof(name));
 
         this.name = name;
     }
 
-    public void SetConnectedCampuses(Campus[] connectedCampuses) //Settar vilka campus som ska vara kopplade till ett visst campus
+    public void SetConnectedCampuses(List<Campus> connectedCampuses) //Settar vilka campus som ska vara kopplade till ett visst campus
     {
         this.connectedCampuses = connectedCampuses;
     }
 
-    public Campus[] GetConnectedCampuses() //Returnerar campusen som är connected till ett visst campus
+    public void PrintConnectedCampuses()
+    {
+        for (int i = 0; i < connectedCampuses.Count; i++)
+        {
+            Console.WriteLine($"{i + 1}. {connectedCampuses[i].ShowName()}");
+        }
+    }
+
+    public string ShowName()
+    {
+        return name;
+    }
+
+    public List<Campus> GetConnectedCampuses() //Returnerar campusen som är connected till ett visst campus
     {
         return connectedCampuses;
     }
 
-}   
+}

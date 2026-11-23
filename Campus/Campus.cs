@@ -9,14 +9,16 @@ public class Campus
     private string name;
     private List<Campus>? connectedCampuses;
     private ICampusAccessRule accessRule;
+    private EventSelector selector;
 
-    public Campus(string name, ICampusAccessRule accessRule)
+    public Campus(string name, ICampusAccessRule accessRule, EventSelector selector)
     {
         if (string.IsNullOrWhiteSpace(name))
             throw new ArgumentException("Name must not be empty.", nameof(name));
 
         this.name = name;
         this.accessRule = accessRule;
+        this.selector = selector;
     }
 
     public void SetConnectedCampuses(List<Campus> connectedCampuses) //Settar vilka campus som ska vara kopplade till ett visst campus
@@ -62,6 +64,7 @@ public class Campus
         if (CanEnter(player))
         {
             player.MoveTo(nextCampus); //Kolla om vi kan göra detta bättre
+            selector.SelectEvent(player);
         }
         else
         {

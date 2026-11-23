@@ -15,12 +15,14 @@ public class Player
    public int AddHp(int amount)
    {
       hp += amount;
+      Console.WriteLine($"Du har nu {hp} hp");
       return hp;
    }
 
    public int LoseHp(int amount)
    {
       hp -= amount;
+      Console.WriteLine($"Du har nu {hp} hp");
       return hp;
    }
 
@@ -53,6 +55,9 @@ public class Player
    public void MoveTo(Campus campus)
    {
       position = campus;
+      Console.WriteLine($"================================");
+      Console.WriteLine($"Du anländer till {campus.ShowName()}!");
+      Console.WriteLine($"================================");
    }
 
    public bool HasWon(int hp, bool hasExam, bool campusCard)

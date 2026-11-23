@@ -4,8 +4,20 @@ class Program
 {
     static void Main(string[] args)
     {
-        Campus ekonomikum = new Campus("Ekonomikum", new OpenAccessRule());
-        Campus blåsenhus = new Campus("Blåsenhus", new CardAccessRule("Blåsenhus"));
+        Random random = new Random();
+
+        List<Event> events = new List<Event>
+        {
+            new StudyEvent(),
+            new TeacherEvent(),
+            new ExamEvent(),
+            new CardEvent("Blåsenhus"),
+            new NothingEvent()
+        };
+
+        EventSelector selector = new EventSelector(events, random);
+        Campus ekonomikum = new Campus("Ekonomikum", new OpenAccessRule(), selector);
+        Campus blåsenhus = new Campus("Blåsenhus", new CardAccessRule("Blåsenhus"), selector);
         Player player = new Player(ekonomikum);
 
         List<Campus> ekoconnections = new List<Campus> { blåsenhus };
@@ -23,19 +35,6 @@ class Program
 
         Console.WriteLine("Ny position::::::");
         player.PrintPosition();
-
-        Random random = new Random();
-
-        List<Event> events = new List<Event>
-        {
-            new StudyEvent(),
-            new TeacherEvent(),
-            new ExamEvent(),
-            new CardEvent("Blåsenhus"),
-            new NothingEvent()
-        };
-
-        EventSelector selector = new EventSelector(events, random);
 
         selector.SelectEvent(player);
         selector.SelectEvent(player);

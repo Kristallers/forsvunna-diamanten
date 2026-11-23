@@ -1,4 +1,7 @@
-public class NothingEvent
+public class NothingEvent : Event
 {
-    // NothingEvent logic and properties would go here
+    public override void Trigger(Player player)
+    {
+        Console.WriteLine("Inget hände den här gången.");
+    }
 }

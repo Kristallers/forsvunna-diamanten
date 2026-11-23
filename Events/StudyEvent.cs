@@ -1,4 +1,8 @@
-public class StudyEvent
+public class StudyEvent : Event
 {
-    // StudyEvent logic and properties would go here
+    public override void Trigger(Player player)
+    {
+        player.AddHp(15);
+        Console.WriteLine("Du klarade tentan! +15 HP");
+    }
 }

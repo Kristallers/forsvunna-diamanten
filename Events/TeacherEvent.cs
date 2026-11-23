@@ -1,4 +1,8 @@
-public class TeacherEvent
+public class TeacherEvent : Event
 {
-    // TeacherEvent logic and properties would go here
+    public override void Trigger(Player player)
+    {
+        player.LoseHp(15);
+        Console.WriteLine("Läraren underkände dig! -15 HP");
+    }
 }

@@ -1,4 +1,8 @@
-public class ExamEvent
+public class ExamEvent : Event
 {
-    // ExamEvent logic and properties would go here
+    public override void Trigger(Player player)
+    {
+        player.GetExam();
+        Console.WriteLine("DU HITTADE EXAMEN!");
+    }
 }

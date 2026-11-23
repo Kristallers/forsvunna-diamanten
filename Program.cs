@@ -15,5 +15,13 @@ class Program
 
         Board spelplan = new Board(campusesForGame, player);
         spelplan.ShowPlayerDestinations();
+
+        player.GetCard();
+
+
+        spelplan.MovePlayer(blåsenhus);
+
+        Console.WriteLine("Ny position::::::");
+        player.PrintPosition();
     }
 }

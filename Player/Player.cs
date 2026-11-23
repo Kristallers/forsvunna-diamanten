@@ -75,23 +75,10 @@ public class Player
          return false;
       }
    }
-   public void CanEnterCampus(Campus nextCampus)
-   {
-
-      if (campusCard)
-      {
-         MoveTo(nextCampus);
-      }
-      else
-      {
-         Console.WriteLine("Du har inte nyckeln som krävs, välj ett annat campus");
-      }
-
-   }
 
    public void PrintPosition()
    {
-      Console.WriteLine($"Du befinner dig på {position}");
+      Console.WriteLine($"Du befinner dig på {position.ShowName()}");
    }
 
    public Campus GetPosition()
@@ -104,7 +91,15 @@ public class Player
       position.PrintConnectedCampuses();
    }
 
+   public Campus ChooseDestination(int choice)
+   {
+      return position.ChooseDestination(choice);
+   }
 
+   public bool IsConnectedTo(Campus nextCampus)
+   {
+      return position.IsConnectedTo(nextCampus);
+   }
 
 
 }

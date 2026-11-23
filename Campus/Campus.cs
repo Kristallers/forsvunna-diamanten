@@ -34,4 +34,42 @@ public class Campus
         return connectedCampuses;
     }
 
+    public Campus ChooseDestination(int choice)
+    {
+        if (choice < 1 || choice > connectedCampuses.Count)
+        {
+            Console.WriteLine($"Välj en siffra mellan 1 och {connectedCampuses.Count}");
+            return null;
+        }
+
+        return connectedCampuses[choice - 1];
+    }
+
+    public void EnterCampus(Campus nextCampus, Player player)
+    {
+
+        if (player.HasCard())
+        {
+            player.MoveTo(nextCampus); //Kolla om vi kan göra detta bättre
+        }
+        else
+        {
+            Console.WriteLine("Du har inte nyckeln som krävs, välj ett annat campus");
+        }
+
+    }
+
+    public bool IsConnectedTo(Campus nextCampus)
+    {
+        for (int i = 0; i < connectedCampuses?.Count; i++)
+        {
+            if (connectedCampuses[i] == nextCampus)
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
 }

@@ -1,4 +1,18 @@
 public class Campus
 {
-    // Campus logic and properties would go here
+    private string name;
+
+    public Campus(string name)
+    {
+        if(string.IsNullOrWhiteSpace(name))
+        throw new ArgumentException("Name must not be empty.", nameof(name));
+
+        this.name = name;
+    }
+
+    public void ConnectCampus(Campus[] connectedCampuses)
+    {
+        //En regel för att komma in -->
+    }
+
 }   

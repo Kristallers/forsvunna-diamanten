@@ -127,5 +127,4 @@ public class Player
       return position.IsConnectedTo(nextCampus);
    }
 
-
 }

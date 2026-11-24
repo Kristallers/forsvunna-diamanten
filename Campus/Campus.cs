@@ -61,7 +61,7 @@ public class Campus
 
     public void EnterCampus(Campus nextCampus, Player player)
     {
-        if (CanEnter(player))
+        if (nextCampus.CanEnter(player))
         {
             player.MoveTo(nextCampus); //Kolla om vi kan göra detta bättre
             selector.SelectEvent(player);

@@ -12,32 +12,11 @@ public class Turn
         }
 
 
-        Random quizindex = new Random();
-        this.quizindex = quizindex;
+        this.quizindex = new Random();
 
         this.player = player;
         this.board = board;
         quiz = new Quiz();
-    }
-    public Campus ChooseDestination()
-    {
-        player.ShowDestinations();
-        List<Campus> connectedCampuses = player.GetPosition().GetConnectedCampuses();
-
-        while (true)
-        {
-            string? choice = Console.ReadLine();
-
-            if (int.TryParse(choice, out int choiceNumber)
-                && choiceNumber >= 1
-                && choiceNumber <= connectedCampuses.Count)
-            {
-                return connectedCampuses[choiceNumber - 1];
-            }
-
-            Console.WriteLine("Ogiltigt val. Välj ett nummer från listan:");
-            player.ShowDestinations();
-        }
     }
     public void Execute()
     {
@@ -45,7 +24,7 @@ public class Turn
         Console.WriteLine($"NY TUR!");
         Console.WriteLine($"Dags att ta ett steg!");
         player.PrintPlayerInfo();
-        Campus destination = ChooseDestination();
+        Campus destination = player.ChooseDestination();
         board.MovePlayer(destination);
         quiz.AnswerQuestion(quizindex, player);
     }

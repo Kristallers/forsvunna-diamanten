@@ -1,7 +1,6 @@
 C# är ett objektorienterat programmeringsspråk.|true
 En klass kan ärva från flera klasser i C#.|false
 private innebär att alla klasser kan komma åt medlemmen.|false
-List<T> kan växa dynamiskt.|true
 En array kan ändra storlek automatiskt.|false
 En konstruktor används för att skapa objekt.|true
 En egenskap (property) kan ha både get och set.|true
@@ -11,10 +10,10 @@ foreach används för att iterera genom en samling.|true
 bool kan endast innehålla true eller false.|true
 string är en värdetyp.|false
 En klass är en mall för objekt.|true
-interface kan innehålla implementation av metoder i alla versioner av C#.|false
-static-medlemmar tillhör klassen och inte objektet.|true
 try används för felhantering.|true
 En exception stoppar alltid hela programmet.|false
 Inkapsling är ett grundläggande OOP-koncept.|true
 En getter används för att läsa ett värde.|true
 En setter används för att skriva ett värde.|true
+DRY betyder Don't Repeat Yourself.|true
+Make impossible states possible är en princip man bör följa i OOP.|false

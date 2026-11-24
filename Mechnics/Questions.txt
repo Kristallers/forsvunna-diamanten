@@ -17,3 +17,4 @@ En getter används för att läsa ett värde.|true
 En setter används för att skriva ett värde.|true
 DRY betyder Don't Repeat Yourself.|true
 Make impossible states possible är en princip man bör följa i OOP.|false
+Run-time type bestämmer vilka medlemmar vi kan anropa.|false

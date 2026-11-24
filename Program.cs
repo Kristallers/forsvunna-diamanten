@@ -23,7 +23,10 @@ class Program
         List<Campus> ekoconnections = new List<Campus> { blåsenhus };
         ekonomikum.SetConnectedCampuses(ekoconnections);
 
-        List<Campus> campusesForGame = new List<Campus> { ekonomikum, blåsenhus }   ;
+        List<Campus> blåsenhusConnections = new List<Campus> { ekonomikum };
+        blåsenhus.SetConnectedCampuses(blåsenhusConnections);
+
+        List<Campus> campusesForGame = new List<Campus> { ekonomikum, blåsenhus };
 
         Board spelplan = new Board(campusesForGame, player);
         spelplan.ShowPlayerDestinations();
@@ -39,5 +42,12 @@ class Program
         selector.SelectEvent(player);
         selector.SelectEvent(player);
         selector.SelectEvent(player);
+
+        player.HasWon();
+
+        player.AddHp(180);
+        player.GetExam();
+        spelplan.MovePlayer(ekonomikum);
+        player.HasWon();
     }
 }

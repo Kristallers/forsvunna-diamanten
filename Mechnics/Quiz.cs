@@ -13,6 +13,7 @@ public class Quiz
         string quizQuestion = parts[0];
         bool answer = bool.Parse(parts[1]);
 
+        Console.WriteLine("Du har kommit till en tenta!");
         Console.WriteLine($"Fråga: {quizQuestion}");
         bool playeranswer = CheckUserInput();
 
@@ -22,7 +23,7 @@ public class Quiz
             player.AddHp(20);
         }
         else
-            Console.WriteLine("Fel! Plugga mer till nästa gång :)");
+            Console.WriteLine("Fel! Plugga mer till nästa gång...");
     }
 
     public bool CheckUserInput()
@@ -31,7 +32,7 @@ public class Quiz
 
         do
         {
-            Console.WriteLine("Besvara frågan med '1' för true eller '2' för false.");
+            Console.WriteLine("Besvara frågan med '1' för sant eller '2' för falskt.");
             int.TryParse((Console.ReadLine()), out answer);
 
             if (answer != 1 && answer != 2)

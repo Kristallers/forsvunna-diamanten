@@ -28,7 +28,7 @@ public class Campus
 
     public void PrintConnectedCampuses()
     {
-        for (int i = 0; i < connectedCampuses.Count; i++)
+        for (int i = 0; i < connectedCampuses?.Count; i++)
         {
             Console.WriteLine($"{i + 1}. {connectedCampuses[i].ShowName()}");
         }
@@ -54,7 +54,7 @@ public class Campus
 
         return connectedCampuses[choice - 1];
     }
-     public bool CanEnter(Player player)
+    public bool CanEnter(Player player)
     {
         return accessRule.CanEnter(player);
     }

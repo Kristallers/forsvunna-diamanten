@@ -1,0 +1,4 @@
+interface IChoice
+{
+    void ActionOfChoice();
+}

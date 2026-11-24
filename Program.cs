@@ -8,7 +8,7 @@ class Program
 
         game.Play();
 
-        List<Campus> campusesForGame = new List<Campus> { ekonomikum, blåsenhus };
+        // List<Campus> campusesForGame = new List<Campus> { ekonomikum, blåsenhus };
 
         // Random random = new Random();
 
@@ -29,13 +29,9 @@ class Program
         // List<Campus> ekoconnections = new List<Campus> { blåsenhus };
         // ekonomikum.SetConnectedCampuses(ekoconnections);
 
-        selector.SelectEvent(player);
-        selector.SelectEvent(player);
-        selector.SelectEvent(player);
-
-        Random quizindex = new Random();
-        Quiz quiz = new Quiz();
-        quiz.AnswerQuestion(quizindex, player);
+        // selector.SelectEvent(player);
+        // selector.SelectEvent(player);
+        // selector.SelectEvent(player);
 
         // List<Campus> blåsenhusConnections = new List<Campus> { ekonomikum };
         // blåsenhus.SetConnectedCampuses(blåsenhusConnections);

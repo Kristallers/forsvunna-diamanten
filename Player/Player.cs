@@ -15,14 +15,14 @@ public class Player
    public int AddHp(int amount)
    {
       hp += amount;
-      Console.WriteLine($"Du har nu {hp} hp");
+      Console.WriteLine($"Du har nu {hp} hp.");
       return hp;
    }
 
    public int LoseHp(int amount)
    {
       hp -= amount;
-      Console.WriteLine($"Du har nu {hp} hp");
+      Console.WriteLine($"Du har nu {hp} hp.");
       return hp;
    }
 
@@ -98,6 +98,5 @@ public class Player
    {
       return position.IsConnectedTo(nextCampus);
    }
-
 
 }

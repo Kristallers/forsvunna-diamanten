@@ -40,9 +40,8 @@ class Program
         selector.SelectEvent(player);
         selector.SelectEvent(player);
 
-
         Random quizindex = new Random();
         Quiz quiz = new Quiz();
-        quiz.ReadQuestions(quizindex);
+        quiz.AnswerQuestion(quizindex, player);
     }
 }

@@ -2,6 +2,8 @@ public class Turn
 {
     Player player;
     Board board;
+    Quiz quiz;
+    Random quizindex;
     public Turn(Player player, Board board)
     {
         if (player == null)
@@ -9,8 +11,13 @@ public class Turn
             throw new ArgumentNullException(nameof(player));
         }
 
+
+        Random quizindex = new Random();
+        this.quizindex = quizindex;
+
         this.player = player;
         this.board = board;
+        quiz = new Quiz();
     }
     public Campus ChooseDestination()
     {
@@ -34,10 +41,12 @@ public class Turn
     }
     public void Execute()
     {
+        Console.Clear();
+        Console.WriteLine($"NY TUR!");
         Console.WriteLine($"Dags att ta ett steg!");
-        player.HasWon();
-        player.PrintPosition();
+        player.PrintPlayerInfo();
         Campus destination = ChooseDestination();
         board.MovePlayer(destination);
+        quiz.AnswerQuestion(quizindex, player);
     }
 }

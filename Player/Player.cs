@@ -62,6 +62,22 @@ public class Player
       }
    }
 
+   public void PrintPlayerInfo()
+   {
+      Console.WriteLine($"Du har {hp} HP.");
+      Console.WriteLine($"Du har {campusCard.Count} campuskort.");
+      campusCard.ForEach(card => Console.WriteLine($"- {card}"));
+      PrintPosition();
+      if (hasExam)
+      {
+         Console.WriteLine("Du har examen!");
+      }
+      else
+      {
+         Console.WriteLine("Du har inte examen än.");
+      }
+   }
+
    public void MoveTo(Campus campus)
    {
       position = campus;
@@ -72,7 +88,7 @@ public class Player
 
    public bool HasWon()
    {
-      if (hp == 180 && hasExam == true && position == startCampus)
+      if (hp >= 180 && hasExam == true && position == startCampus)
       {
          Console.WriteLine("================================");
          Console.WriteLine("Du hittade den försvunna examen!");

@@ -4,37 +4,30 @@ class Program
 {
     static void Main(string[] args)
     {
-        Random random = new Random();
+        Game game = new Game();
 
-        List<Event> events = new List<Event>
-        {
-            new StudyEvent(),
-            new TeacherEvent(),
-            new ExamEvent(),
-            new CardEvent("Blåsenhus"),
-            new NothingEvent()
-        };
-
-        EventSelector selector = new EventSelector(events, random);
-        Campus ekonomikum = new Campus("Ekonomikum", new OpenAccessRule(), selector);
-        Campus blåsenhus = new Campus("Blåsenhus", new CardAccessRule("Blåsenhus"), selector);
-        Player player = new Player(ekonomikum);
-
-        List<Campus> ekoconnections = new List<Campus> { blåsenhus };
-        ekonomikum.SetConnectedCampuses(ekoconnections);
+        game.Play();
 
         List<Campus> campusesForGame = new List<Campus> { ekonomikum, blåsenhus };
 
-        Board spelplan = new Board(campusesForGame, player);
-        spelplan.ShowPlayerDestinations();
+        // Random random = new Random();
 
-        player.GetCard("Blåsenhus");
+        // List<Event> events = new List<Event>
+        // {
+        //     new StudyEvent(),
+        //     new TeacherEvent(),
+        //     new ExamEvent(),
+        //     new CardEvent("Blåsenhus"),
+        //     new NothingEvent()
+        // };
 
+        // EventSelector selector = new EventSelector(events, random);
+        // Campus ekonomikum = new Campus("Ekonomikum", new OpenAccessRule(), selector);
+        // Campus blåsenhus = new Campus("Blåsenhus", new CardAccessRule("Blåsenhus"), selector);
+        // Player player = new Player(ekonomikum);
 
-        spelplan.MovePlayer(blåsenhus);
-
-        Console.WriteLine("Ny position::::::");
-        player.PrintPosition();
+        // List<Campus> ekoconnections = new List<Campus> { blåsenhus };
+        // ekonomikum.SetConnectedCampuses(ekoconnections);
 
         selector.SelectEvent(player);
         selector.SelectEvent(player);
@@ -43,5 +36,32 @@ class Program
         Random quizindex = new Random();
         Quiz quiz = new Quiz();
         quiz.AnswerQuestion(quizindex, player);
+
+        // List<Campus> blåsenhusConnections = new List<Campus> { ekonomikum };
+        // blåsenhus.SetConnectedCampuses(blåsenhusConnections);
+
+        // List<Campus> campusesForGame = new List<Campus> { ekonomikum, blåsenhus };
+
+        // Board spelplan = new Board(campusesForGame, player);
+        // spelplan.ShowPlayerDestinations();
+
+        // player.GetCard("Blåsenhus");
+
+
+        // spelplan.MovePlayer(blåsenhus);
+
+        // Console.WriteLine("Ny position::::::");
+        // player.PrintPosition();
+
+        // selector.SelectEvent(player);
+        // selector.SelectEvent(player);
+        // selector.SelectEvent(player);
+
+        // player.HasWon();
+
+        // player.AddHp(180);
+        // player.GetExam();
+        // spelplan.MovePlayer(ekonomikum);
+        // player.HasWon();
     }
 }

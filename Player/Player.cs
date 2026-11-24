@@ -15,14 +15,24 @@ public class Player
    public int AddHp(int amount)
    {
       hp += amount;
-      Console.WriteLine($"Du har nu {hp} hp.");
+      if (hp > 180)
+      {
+         Console.WriteLine("Du har tillräckligt HP för att vinna!");
+         Console.WriteLine("Hitta examen och återvänd till startcampuset för att vinna spelet.");
+      }
+      Console.WriteLine($"Du har nu {hp} hp");
       return hp;
    }
 
    public int LoseHp(int amount)
    {
       hp -= amount;
-      Console.WriteLine($"Du har nu {hp} hp.");
+      if (hp < 0)
+      {
+         hp = 0;
+      }
+
+      Console.WriteLine($"Du har nu {hp} hp");
       return hp;
    }
 
@@ -60,18 +70,36 @@ public class Player
       Console.WriteLine($"================================");
    }
 
-   public bool HasWon(int hp, bool hasExam, bool campusCard)
+   public bool HasWon()
    {
-      if (hp == 180 && hasExam == true && campusCard == true)
+      if (hp == 180 && hasExam == true && position == startCampus)
       {
-         Console.WriteLine("Congratulations!! You have won the game and attained a degree :)");
+         Console.WriteLine("================================");
+         Console.WriteLine("Du hittade den försvunna examen!");
+         Console.WriteLine($"Du samlade {hp} HP.");
+         Console.WriteLine($"Du har återvänt till {startCampus.ShowName()}.");
+         Console.WriteLine("DU HAR TAGIT DIN EXAMEN!");
+         Console.WriteLine("================================");
          return true;
       }
-
-      else
+      else if (hp < 180)
       {
+         Console.WriteLine("Du har inte tillräckligt med HP för att vinna spelet.");
+         Console.WriteLine("HP som behövs: 180, du har: " + hp);
+         Console.WriteLine($"Du behöver samla {180 - hp} HP för att kunna ta examen.");
          return false;
       }
+      else if (!hasExam)
+      {
+         Console.WriteLine("Du har inte hittat examen än.");
+         return false;
+      }
+      else if (position != startCampus)
+      {
+         Console.WriteLine("Du måste återvända till startcampuset för att vinna spelet.");
+         return false;
+      }
+      return false;
    }
 
    public void PrintPosition()

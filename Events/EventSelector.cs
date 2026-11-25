@@ -16,8 +16,11 @@ public class EventSelector
 
     public Event SelectEvent(Player player)
     {
-        int index = random.Next(events.Count);
-        Event selectedEvent = events[index];
+        List<Event> availableEvents =
+        events.Where(eventItem => !eventItem.IsUsedUp).ToList();
+
+        int index = random.Next(availableEvents.Count);
+        Event selectedEvent = availableEvents[index];
 
         selectedEvent.Announce();
         selectedEvent.Trigger(player);

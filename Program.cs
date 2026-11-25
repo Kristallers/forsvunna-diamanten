@@ -32,7 +32,10 @@ class Program
         // selector.SelectEvent(player);
         // selector.SelectEvent(player);
         // selector.SelectEvent(player);
+<<<<<<< HEAD
 
+=======
+>>>>>>> main
         // List<Campus> blåsenhusConnections = new List<Campus> { ekonomikum };
         // blåsenhus.SetConnectedCampuses(blåsenhusConnections);
 

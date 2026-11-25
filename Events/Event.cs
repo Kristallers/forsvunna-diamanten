@@ -5,6 +5,7 @@
 // Arv och beroendeinjektion
 public abstract class Event
 {
+    public bool IsUsedUp { get; private set; }
     public void Announce()
     {
         Console.WriteLine("Nu sker ett event!");
@@ -13,5 +14,10 @@ public abstract class Event
     public virtual void Trigger(Player player)
     {
         Console.WriteLine("Ett event triggas och händelse triggas");
+    }
+
+    protected void Use()
+    {
+        IsUsedUp = true;
     }
 }

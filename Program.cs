@@ -8,26 +8,49 @@ class Program
 
         game.Play();
 
-        // List<Campus> campusesForGame = new List<Campus> { ekonomikum, blåsenhus };
+        List<Event> cardEvents = new List<Event>
+        {
+            new CardEvent("Blåsenhus"),
+            new CardEvent("Engelska parken"),
+            new CardEvent("BMC"),
+        };
 
-        // Random random = new Random();
+        Quiz quiz = new Quiz();
 
-        // List<Event> events = new List<Event>
-        // {
-        //     new StudyEvent(),
-        //     new TeacherEvent(),
-        //     new ExamEvent(),
-        //     new CardEvent("Blåsenhus"),
-        //     new NothingEvent()
-        // };
+        Random random = new Random();
 
-        // EventSelector selector = new EventSelector(events, random);
-        // Campus ekonomikum = new Campus("Ekonomikum", new OpenAccessRule(), selector);
-        // Campus blåsenhus = new Campus("Blåsenhus", new CardAccessRule("Blåsenhus"), selector);
-        // Player player = new Player(ekonomikum);
+        List<Event> events = new List<Event>
+         {
+            new StudyEvent(),
+            new TeacherEvent(),
+            new ExamEvent(),
+            new CardEvent("Blåsenhus"),
+            new NothingEvent(),
+            new CardEvent("Engelska parken"),
+            new CardEvent("BMC"),
+         };
 
-        // List<Campus> ekoconnections = new List<Campus> { blåsenhus };
-        // ekonomikum.SetConnectedCampuses(ekoconnections);
+        EventSelector selector = new EventSelector(events, random);
+        Campus ekonomikum = new Campus("Ekonomikum", new OpenAccessRule(), selector);
+        Campus blåsenhus = new Campus("Blåsenhus", new CardAccessRule("Blåsenhus"), selector);
+        Player player = new Player(ekonomikum);
+
+        List<Campus> ekoconnections = new List<Campus> { blåsenhus };
+        ekonomikum.SetConnectedCampuses(ekoconnections);
+        EventSelector cardSelector = new EventSelector(events, random);
+
+        QuizChoice quizChoice = new QuizChoice(quiz, random, player);
+        NationChoice nationChoice = new NationChoice(cardEvents, player);
+
+        List<Campus> campusesForGame = new List<Campus> { ekonomikum, blåsenhus };
+        IChoice choice1 = new QuizChoice(quiz, random, player);
+
+        player.ChooseOption(quizChoice, nationChoice);
+
+
+
+        // IChoice choice2 = new NationChoice();
+
 
         // selector.SelectEvent(player);
         // selector.SelectEvent(player);

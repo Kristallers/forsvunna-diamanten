@@ -1,4 +1,4 @@
-interface IChoice
+public interface IChoice
 {
     void ActionOfChoice();
 }

@@ -7,7 +7,6 @@ public class Player
    private List<string> campusCard = new List<string>();
    private bool hasExam = false;
    private Campus position;
-   private int playerChoice;
 
    public Player(Campus campus)
    {
@@ -141,32 +140,28 @@ public class Player
    {
       return position.IsConnectedTo(nextCampus);
    }
-   public int ChooseOption()
+   public void ChooseOption(IChoice nationChoice, IChoice quizChoice)
    {
-      Console.WriteLine("Vad vill du göra?");
-      Console.WriteLine("Alternativ 1: Ta ett quiz och få chansen att vinna hp!");
-      Console.WriteLine("Alternativ 2: Gå på nation och få chansen att hitta någons borttappade nationskort!");
-      Console.WriteLine("Välj nu alternativ '1' eller '2': ");
-      int.TryParse(Console.ReadLine(), out int playerChoice);
+      int playerChoice;
+      do
+      {
+         Console.WriteLine("Vad vill du göra?");
+         Console.WriteLine("Alternativ 1: Ta ett quiz och få chansen att vinna hp!");
+         Console.WriteLine("Alternativ 2: Gå på nation och få chansen att hitta någons borttappade nationskort!");
+         Console.WriteLine("Välj nu alternativ '1' eller '2': ");
+         int.TryParse(Console.ReadLine(), out playerChoice);
 
-      if (playerChoice < 1 || playerChoice > 2)
-         throw new ArgumentOutOfRangeException(nameof(playerChoice));
+         if (playerChoice < 1 || playerChoice > 2)
+         {
+            Console.WriteLine("Felaktig inmatning. Välj '1' eller '2'!");
+         }
+      }
+      while (playerChoice != 1 && playerChoice != 2);
 
-      this.playerChoice = playerChoice;
-
-      return this.playerChoice;
-   }
-
-   public void ActivateOption(IChoice choice)
-   {
       if (playerChoice == 1)
-      {
-         choice.ActionOfChoice();
-      }
-      else if (playerChoice == 2)
-      {
-         //fixa imorgon
-      }
-   }
+         quizChoice.ActionOfChoice();
 
+      else if (playerChoice == 2)
+         nationChoice.ActionOfChoice();
+   }
 }

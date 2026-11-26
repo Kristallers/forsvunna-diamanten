@@ -12,6 +12,8 @@ class QuizChoice : IChoice
     }
     public void ActionOfChoice()
     {
-        quiz.AnswerQuestion(random, player);
+        quiz.ShowQuestion(random);
+        quiz.EvaluateAnswer(player);
     }
+
 }

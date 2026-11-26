@@ -20,12 +20,12 @@ public class Turn
     }
     public void Execute()
     {
-        Console.Clear();
         Console.WriteLine($"NY TUR!");
         Console.WriteLine($"Dags att ta ett steg!");
         player.PrintPlayerInfo();
         Campus destination = player.ChooseDestination();
         board.MovePlayer(destination);
-        quiz.AnswerQuestion(quizindex, player);
+        quiz.ShowQuestion(quizindex);
+        quiz.EvaluateAnswer(player);
     }
 }

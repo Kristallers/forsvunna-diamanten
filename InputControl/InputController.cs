@@ -1,4 +1,4 @@
-public class InputControl
+public class InputController
 {
     public bool CheckQuizInput()
     {

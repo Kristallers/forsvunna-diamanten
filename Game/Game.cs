@@ -2,6 +2,7 @@ public class Game
 {
     private Player player;
     private Board board;
+
     public Game()
     {
         Random random = new Random();

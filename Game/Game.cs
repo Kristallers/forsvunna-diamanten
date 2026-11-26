@@ -13,6 +13,9 @@ public class Game
             new ExamEvent(),
             new CardEvent("Blåsenhus"),
             new CardEvent("Ekonomikum"),
+            new CardEvent("BMC"),
+            new CardEvent("Ångströms"),
+            new CardEvent("Engelska parken"),
             new NothingEvent()
         };
         EventSelector selector = new EventSelector(events, random);
@@ -32,6 +35,11 @@ public class Game
         List<Campus> campusesForGame = new List<Campus> { ångström, ekonomikum, blåsenhus };
 
         board = new Board(campusesForGame, player);
+
+        Random quizindex = new Random();
+        Quiz quiz = new Quiz();
+        quiz.ShowQuestion(random);
+        quiz.EvaluateAnswer(player);
     }
 
     public void Play()

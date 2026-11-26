@@ -26,6 +26,6 @@ public class Turn
         player.PrintPlayerInfo();
         Campus destination = player.ChooseDestination();
         board.MovePlayer(destination);
-        quiz.AnswerQuestion(quizindex, player);
+        // quiz.AnswerQuestion(quizindex, player);
     }
 }

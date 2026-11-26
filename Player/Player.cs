@@ -1,3 +1,5 @@
+using System.Security.Cryptography.X509Certificates;
+
 public class Player
 {
    private Campus startCampus;
@@ -138,5 +140,28 @@ public class Player
    {
       return position.IsConnectedTo(nextCampus);
    }
+   public void ChooseOption(IChoice nationChoice, IChoice quizChoice)
+   {
+      int playerChoice;
+      do
+      {
+         Console.WriteLine("Vad vill du göra?");
+         Console.WriteLine("Alternativ 1: Ta ett quiz och få chansen att vinna hp!");
+         Console.WriteLine("Alternativ 2: Gå på nation och få chansen att hitta någons borttappade nationskort!");
+         Console.WriteLine("Välj nu alternativ '1' eller '2': ");
+         int.TryParse(Console.ReadLine(), out playerChoice);
 
+         if (playerChoice < 1 || playerChoice > 2)
+         {
+            Console.WriteLine("Felaktig inmatning. Välj '1' eller '2'!");
+         }
+      }
+      while (playerChoice != 1 && playerChoice != 2);
+
+      if (playerChoice == 1)
+         quizChoice.ActionOfChoice();
+
+      else if (playerChoice == 2)
+         nationChoice.ActionOfChoice();
+   }
 }

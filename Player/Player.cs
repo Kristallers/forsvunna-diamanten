@@ -13,7 +13,6 @@ public class Player
       startCampus = campus;
       position = campus;
    }
-
    public int AddHp(int amount)
    {
       hp += amount;
@@ -25,7 +24,6 @@ public class Player
       Console.WriteLine($"Du har nu {hp} hp");
       return hp;
    }
-
    public int LoseHp(int amount)
    {
       hp -= amount;
@@ -37,7 +35,6 @@ public class Player
       Console.WriteLine($"Du har nu {hp} hp");
       return hp;
    }
-
    public void GetCard(string card) //Anropas när en spelare får ett campuskort
    {
       campusCard.Add(card);
@@ -51,16 +48,19 @@ public class Player
    {
       hasExam = true;
    }
-
-   public bool HasExam() //Anropas för att se att en spelare har en examen
+   public void PrintPlayerInfo()
    {
+      Console.WriteLine($"Du har {hp} HP.");
+      Console.WriteLine($"Du har {campusCard.Count} campuskort.");
+      campusCard.ForEach(card => Console.WriteLine($"- {card}"));
+      PrintPosition();
       if (hasExam)
       {
-         return true;
+         Console.WriteLine("Du har examen!");
       }
       else
       {
-         return false;
+         Console.WriteLine("Du har inte examen än.");
       }
    }
 
@@ -74,7 +74,7 @@ public class Player
 
    public bool HasWon()
    {
-      if (hp == 180 && hasExam == true && position == startCampus)
+      if (hp >= 180 && hasExam == true && position == startCampus)
       {
          Console.WriteLine("================================");
          Console.WriteLine("Du hittade den försvunna examen!");
@@ -103,22 +103,34 @@ public class Player
       }
       return false;
    }
-
    public void PrintPosition()
    {
       Console.WriteLine($"Du befinner dig på {position.ShowName()}");
    }
-
    public Campus GetPosition()
    {
       return position;
    }
-
-   public void ShowDestinations()
+   public Campus ChooseDestination()
    {
       position.PrintConnectedCampuses();
-   }
+      List<Campus> connectedCampuses = position.GetConnectedCampuses();
 
+      while (true)
+      {
+         string? choice = Console.ReadLine();
+
+         if (int.TryParse(choice, out int choiceNumber)
+             && choiceNumber >= 1
+             && choiceNumber <= connectedCampuses.Count)
+         {
+            return connectedCampuses[choiceNumber - 1];
+         }
+
+         Console.WriteLine("Ogiltigt val. Välj ett nummer från listan:");
+         position.PrintConnectedCampuses();
+      }
+   }
    public Campus ChooseDestination(int choice)
    {
       return position.ChooseDestination(choice);

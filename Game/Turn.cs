@@ -2,6 +2,8 @@ public class Turn
 {
     Player player;
     Board board;
+    Quiz quiz;
+    Random quizindex;
     public Turn(Player player, Board board)
     {
         if (player == null)
@@ -9,35 +11,21 @@ public class Turn
             throw new ArgumentNullException(nameof(player));
         }
 
+
+        this.quizindex = new Random();
+
         this.player = player;
         this.board = board;
-    }
-    public Campus ChooseDestination()
-    {
-        player.ShowDestinations();
-        List<Campus> connectedCampuses = player.GetPosition().GetConnectedCampuses();
-
-        while (true)
-        {
-            string? choice = Console.ReadLine();
-
-            if (int.TryParse(choice, out int choiceNumber)
-                && choiceNumber >= 1
-                && choiceNumber <= connectedCampuses.Count)
-            {
-                return connectedCampuses[choiceNumber - 1];
-            }
-
-            Console.WriteLine("Ogiltigt val. Välj ett nummer från listan:");
-            player.ShowDestinations();
-        }
+        quiz = new Quiz();
     }
     public void Execute()
     {
+        Console.Clear();
+        Console.WriteLine($"NY TUR!");
         Console.WriteLine($"Dags att ta ett steg!");
-        player.HasWon();
-        player.PrintPosition();
-        Campus destination = ChooseDestination();
+        player.PrintPlayerInfo();
+        Campus destination = player.ChooseDestination();
         board.MovePlayer(destination);
+        // quiz.AnswerQuestion(quizindex, player);
     }
 }

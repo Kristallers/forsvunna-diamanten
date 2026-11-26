@@ -4,5 +4,6 @@ public class ExamEvent : Event
     {
         player.GetExam();
         Console.WriteLine("DU HITTADE EXAMEN!");
+        Use();
     }
 }

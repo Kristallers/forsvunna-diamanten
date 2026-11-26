@@ -17,5 +17,6 @@ public class CardEvent : Event
 
         player.GetCard(cardName);
         Console.WriteLine($"Du hittade ett campuskort! Du har nu tillgång till {cardName}.");
+        Use();
     }
 }

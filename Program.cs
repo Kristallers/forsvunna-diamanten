@@ -2,24 +2,24 @@
 
 class Program
 {
-    static void Main(string[] args)
-    {
-        Game game = new Game();
+        static void Main(string[] args)
+        {
+                Game game = new Game();
 
-        game.Play();
+                game.Play();
 
-        List<Event> cardEvents = new List<Event>
+                List<Event> cardEvents = new List<Event>
         {
             new CardEvent("Blåsenhus"),
             new CardEvent("Engelska parken"),
             new CardEvent("BMC"),
         };
 
-        Quiz quiz = new Quiz();
+                Quiz quiz = new Quiz();
 
-        Random random = new Random();
+                Random random = new Random();
 
-        List<Event> events = new List<Event>
+                List<Event> events = new List<Event>
          {
             new StudyEvent(),
             new TeacherEvent(),
@@ -30,57 +30,56 @@ class Program
             new CardEvent("BMC"),
          };
 
-        EventSelector selector = new EventSelector(events, random);
-        Campus ekonomikum = new Campus("Ekonomikum", new OpenAccessRule(), selector);
-        Campus blåsenhus = new Campus("Blåsenhus", new CardAccessRule("Blåsenhus"), selector);
-        Player player = new Player(ekonomikum);
+                EventSelector selector = new EventSelector(events, random);
+                Campus ekonomikum = new Campus("Ekonomikum", new OpenAccessRule(), selector);
+                Campus blåsenhus = new Campus("Blåsenhus", new CardAccessRule("Blåsenhus"), selector);
+                Player player = new Player(ekonomikum);
 
-        List<Campus> ekoconnections = new List<Campus> { blåsenhus };
-        ekonomikum.SetConnectedCampuses(ekoconnections);
-        EventSelector cardSelector = new EventSelector(events, random);
+                List<Campus> ekoconnections = new List<Campus> { blåsenhus };
+                ekonomikum.SetConnectedCampuses(ekoconnections);
+                EventSelector cardSelector = new EventSelector(events, random);
 
-        QuizChoice quizChoice = new QuizChoice(quiz, random, player);
-        NationChoice nationChoice = new NationChoice(cardEvents, player);
+                QuizChoice quizChoice = new QuizChoice(quiz, random, player);
+                NationChoice nationChoice = new NationChoice(cardEvents, player);
 
-        List<Campus> campusesForGame = new List<Campus> { ekonomikum, blåsenhus };
-        IChoice choice1 = new QuizChoice(quiz, random, player);
+                List<Campus> campusesForGame = new List<Campus> { ekonomikum, blåsenhus };
+                IChoice choice1 = new QuizChoice(quiz, random, player);
 
-        player.ChooseOption(quizChoice, nationChoice);
-
-
-
-        // IChoice choice2 = new NationChoice();
+                player.ChooseOption(quizChoice, nationChoice);
 
 
-        // selector.SelectEvent(player);
-        // selector.SelectEvent(player);
-        // selector.SelectEvent(player);
 
-        // List<Campus> blåsenhusConnections = new List<Campus> { ekonomikum };
-        // blåsenhus.SetConnectedCampuses(blåsenhusConnections);
-
-        // List<Campus> campusesForGame = new List<Campus> { ekonomikum, blåsenhus };
-
-        // Board spelplan = new Board(campusesForGame, player);
-        // spelplan.ShowPlayerDestinations();
-
-        // player.GetCard("Blåsenhus");
+                // IChoice choice2 = new NationChoice();
 
 
-        // spelplan.MovePlayer(blåsenhus);
+                // selector.SelectEvent(player);
+                // selector.SelectEvent(player);
+                // selector.SelectEvent(player);
+                // List<Campus> blåsenhusConnections = new List<Campus> { ekonomikum };
+                // blåsenhus.SetConnectedCampuses(blåsenhusConnections);
 
-        // Console.WriteLine("Ny position::::::");
-        // player.PrintPosition();
+                // List<Campus> campusesForGame = new List<Campus> { ekonomikum, blåsenhus };
 
-        // selector.SelectEvent(player);
-        // selector.SelectEvent(player);
-        // selector.SelectEvent(player);
+                // Board spelplan = new Board(campusesForGame, player);
+                // spelplan.ShowPlayerDestinations();
 
-        // player.HasWon();
+                // player.GetCard("Blåsenhus");
 
-        // player.AddHp(180);
-        // player.GetExam();
-        // spelplan.MovePlayer(ekonomikum);
-        // player.HasWon();
-    }
+
+                // spelplan.MovePlayer(blåsenhus);
+
+                // Console.WriteLine("Ny position::::::");
+                // player.PrintPosition();
+
+                // selector.SelectEvent(player);
+                // selector.SelectEvent(player);
+                // selector.SelectEvent(player);
+
+                // player.HasWon();
+
+                // player.AddHp(180);
+                // player.GetExam();
+                // spelplan.MovePlayer(ekonomikum);
+                // player.HasWon();
+        }
 }

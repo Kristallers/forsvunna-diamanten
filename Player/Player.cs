@@ -113,6 +113,7 @@ public class Player
    }
    public Campus ChooseDestination()
    {
+      Console.WriteLine("Välj en destination från listan nedan genom att skriva numret:");
       position.PrintConnectedCampuses();
       List<Campus> connectedCampuses = position.GetConnectedCampuses();
 

@@ -2,12 +2,14 @@ public class Game
 {
     private Player player;
     private Board board;
+    private Random quizindex = new Random();
+    private List<Event> events;
 
     public Game()
     {
         Random random = new Random();
 
-        List<Event> events = new List<Event>
+        events = new List<Event>
         {
             new StudyEvent(),
             new TeacherEvent(),
@@ -37,7 +39,6 @@ public class Game
 
         board = new Board(campusesForGame, player);
 
-        Random quizindex = new Random();
         Quiz quiz = new Quiz();
         // quiz.ShowQuestion(quizindex);
         // quiz.EvaluateAnswer(player);
@@ -47,7 +48,7 @@ public class Game
     {
         while (!player.HasWon())
         {
-            Turn turn = new Turn(player, board);
+            Turn turn = new Turn(player, board, quizindex, events);
             turn.Execute();
         }
     }

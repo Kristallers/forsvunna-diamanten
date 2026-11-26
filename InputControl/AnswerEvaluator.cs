@@ -1,13 +1,17 @@
 public class AnswerEvaluator
 {
-    private InputControl inputControl;
-    public AnswerEvaluator(InputControl inputControl)
+    private InputController inputController;
+    private Quiz quiz;
+    private Player player;
+    public AnswerEvaluator(InputController inputController, Player player, Quiz quiz)
     {
-        this.inputControl = inputControl;
+        this.inputController = inputController;
+        this.player = player;
+        this.quiz = quiz;
     }
-    public void EvaluateQuizAnswer(Player player, Quiz quiz)
+    public void EvaluateQuizAnswer()
     {
-        bool playerAnswer = inputControl.CheckQuizInput();
+        bool playerAnswer = inputController.CheckQuizInput();
 
         if (quiz.CheckAnswer(playerAnswer))
         {
@@ -22,7 +26,7 @@ public class AnswerEvaluator
     }
     public void EvaluateChoiceOption(IChoice nationChoice, IChoice quizChoice)
     {
-        int playerChoice = inputControl.CheckChoiceInput();
+        int playerChoice = inputController.CheckChoiceInput();
 
         if (playerChoice == 1)
             quizChoice.ActionOfChoice();

@@ -4,9 +4,9 @@ public class NationChoice : IChoice
     private Player player;
     private Random random = new Random();
 
-    public NationChoice(List<Event> events, Player player)
+    public NationChoice(List<Event> cardEvents, Player player)
     {
-        cardEvents = events;
+        this.cardEvents = cardEvents;
         this.player = player;
     }
 
@@ -15,6 +15,7 @@ public class NationChoice : IChoice
         if (random.Next(3) == 0)
         {
             new EventSelector(cardEvents, random).SelectEvent(player);
+            //försökte med injektion men det blev knas med listorna
 
         }
         else

@@ -35,6 +35,12 @@ class Program
                 Campus blåsenhus = new Campus("Blåsenhus", new CardAccessRule("Blåsenhus"), selector);
                 Player player = new Player(ekonomikum);
 
+                // selector.SelectEvent(player);
+                // selector.SelectEvent(player);
+                // selector.SelectEvent(player);
+
+                // List<Campus> blåsenhusConnections = new List<Campus> { ekonomikum };
+                // blåsenhus.SetConnectedCampuses(blåsenhusConnections);
                 List<Campus> ekoconnections = new List<Campus> { blåsenhus };
                 ekonomikum.SetConnectedCampuses(ekoconnections);
                 EventSelector cardSelector = new EventSelector(events, random);

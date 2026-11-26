@@ -38,8 +38,8 @@ public class Game
 
         Random quizindex = new Random();
         Quiz quiz = new Quiz();
-        quiz.ShowQuestion(random);
-        quiz.EvaluateAnswer(player);
+        // quiz.ShowQuestion(quizindex);
+        // quiz.EvaluateAnswer(player);
     }
 
     public void Play()

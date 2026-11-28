@@ -15,7 +15,6 @@ public class NationChoice : IChoice
         if (random.Next(3) == 0)
         {
             new EventSelector(cardEvents, random).SelectEvent(player);
-            //försökte med injektion men det blev knas med listorna
 
         }
         else

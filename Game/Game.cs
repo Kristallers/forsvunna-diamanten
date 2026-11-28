@@ -40,12 +40,11 @@ public class Game
         board = new Board(campusesForGame, player);
 
         Quiz quiz = new Quiz();
-        // quiz.ShowQuestion(quizindex);
-        // quiz.EvaluateAnswer(player);
     }
 
-    public void Play()
+    public void Play(GameRules gameRules)
     {
+        gameRules.WriteGameRules();
         while (!player.HasWon())
         {
             Turn turn = new Turn(player, board, quizindex, events);

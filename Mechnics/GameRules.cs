@@ -6,9 +6,9 @@ public class GameRules
         Console.ReadLine();
         Console.Clear();
 
-        Console.WriteLine("Här kommer lite spelregler! Spelet går ut på att du ska hitta din försvunna examen, som ligger gömd på något av Uppsalas campus.");
+        Console.WriteLine("Här kommer lite spelregler!: ");
         Console.WriteLine();
-        Console.WriteLine("Du börjar på ditt hemcampus Ekonomikum. Du vinner spelet när du lyckats samla minst 180 hp, hittat examen och tagit dig tillbaka till Ekonomikum.");
+        Console.WriteLine("Spelet går ut på att du ska hitta din försvunna examen, som ligger gömd på något av Uppsalas campus. Du börjar på ditt hemcampus Ekonomikum. Du vinner spelet när du lyckats samla minst 180 hp, hittat examen och tagit dig tillbaka till Ekonomikum.");
         Console.ReadLine();
         Console.Clear();
 
@@ -18,7 +18,7 @@ public class GameRules
         Console.ReadLine();
         Console.Clear();
 
-        Console.WriteLine("Stort lycka till med att hitta din försvunna examen! :)");
+        Console.WriteLine("Stort lycka till med att hitta din försvunna examen, låt oss börja spelet! :)");
         Console.ReadLine();
         Console.Clear();
     }

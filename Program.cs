@@ -58,7 +58,8 @@ class Program
                 IChoice nationChoice = new NationChoice(cardEvents, player);
                 IChoice quizChoice = new QuizChoice(quiz, random, player, answerEvaluator);
 
-                game.Play();
+                GameRules gameRules = new GameRules();
+                game.Play(gameRules);
 
 
                 // selector.SelectEvent(player);

@@ -35,16 +35,16 @@ public class Player
       Console.WriteLine($"Du har nu {hp} hp");
       return hp;
    }
-   public void GetCard(string card) //Anropas när en spelare får ett campuskort
+   public void GetCard(string card)
    {
       campusCard.Add(card);
    }
 
-   public bool HasCard(string requiredCard) //För att se om spelaren har rätt campuskort
+   public bool HasCard(string requiredCard)
    {
       return campusCard.Contains(requiredCard);
    }
-   public void GetExam() //Anropas när en spelare hittat examen
+   public void GetExam()
    {
       hasExam = true;
    }
@@ -53,7 +53,8 @@ public class Player
       Console.WriteLine($"Du har {hp} HP.");
       Console.WriteLine($"Du har {campusCard.Count} campuskort.");
       campusCard.ForEach(card => Console.WriteLine($"- {card}"));
-      PrintPosition();
+      Console.WriteLine($"Du befinner dig på {position.ShowName()}.");
+
       if (hasExam)
       {
          Console.WriteLine("Du har examen!");
@@ -63,7 +64,6 @@ public class Player
          Console.WriteLine("Du har inte examen än.");
       }
    }
-
    public void MoveTo(Campus campus)
    {
       position = campus;
@@ -102,10 +102,6 @@ public class Player
          return false;
       }
       return false;
-   }
-   public void PrintPosition()
-   {
-      Console.WriteLine($"Du befinner dig på {position.ShowName()}");
    }
    public Campus GetPosition()
    {

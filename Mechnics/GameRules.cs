@@ -2,7 +2,7 @@ public class GameRules
 {
     public void WriteGameRules()
     {
-        Console.WriteLine("Hej och välkomna till vårt spel Försvunna Examen!! :)");
+        Console.WriteLine("Hej och välkommen till vårt spel Försvunna Examen!! :)");
         Console.ReadLine();
         Console.Clear();
 
